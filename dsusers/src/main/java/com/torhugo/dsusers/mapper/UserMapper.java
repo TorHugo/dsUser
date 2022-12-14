@@ -25,7 +25,7 @@ public class UserMapper {
     }
 
     private Boolean validateCpf(final String cpf) throws Exception {
-        if (cpf.length() > 11 || cpf.length() < 1)
+        if (cpf.length() < 11)
             throw new Exception("Cpf is not valid.");
 
         return true;
