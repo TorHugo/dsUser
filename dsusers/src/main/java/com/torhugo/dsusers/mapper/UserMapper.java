@@ -5,8 +5,6 @@ import com.torhugo.dsusers.entity.model.UserModel;
 import com.torhugo.dsusers.exception.impl.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-
 @Component
 public class UserMapper {
 
