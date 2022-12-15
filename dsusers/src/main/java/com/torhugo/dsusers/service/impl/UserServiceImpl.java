@@ -7,6 +7,8 @@ import com.torhugo.dsusers.mapper.UserMapper;
 import com.torhugo.dsusers.repository.UserRepository;
 import com.torhugo.dsusers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,5 +40,12 @@ public class UserServiceImpl implements UserService {
         UserModel model = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found."));
 
         return new UserDTO(model);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<UserDTO> findAllPaged(PageRequest pageRequest) {
+        Page<UserModel> list = repository.findAll(pageRequest);
+        return list.map(UserDTO::new);
     }
 }
