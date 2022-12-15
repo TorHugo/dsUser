@@ -11,4 +11,8 @@ public interface UserService {
     UserDTO findById(final Long id);
 
     Page<UserDTO> findAllPaged(PageRequest pageRequest);
+
+    UserDTO update(Long id, UserDTO dto);
+
+    void delete(Long id);
 }

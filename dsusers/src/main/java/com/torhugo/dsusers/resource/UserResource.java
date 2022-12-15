@@ -47,4 +47,18 @@ public class UserResource {
         Page<UserDTO> list = service.findAllPaged(pageRequest);
         return ResponseEntity.ok().body(list);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO dto){
+
+        dto = service.update(id, dto);
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<UserDTO> delete(@PathVariable Long id){
+
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
